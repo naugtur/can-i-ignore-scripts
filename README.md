@@ -1,0 +1,1 @@
+# can-i-ignore-scripts
