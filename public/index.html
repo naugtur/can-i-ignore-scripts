@@ -1,1 +1,71 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can I ignore packages?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Crafty+Girls&display=swap');
+
+        input, a {
+            background: #fff;
+            border: 1px solid #555;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: 'Crafty Girls', sans-serif;
+        }
+
+        section {
+            font-size: 17pt;
+            max-width: 600px;
+            font-family: 'Crafty Girls', sans-serif;
+            text-align: center;
+            color: #333;
+        }
+        pre {
+            width: 600px
+        }
+
+        * {
+            margin: 1em auto;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+
+        <h1>Can I ignore packages?</h1>
+        <p>
+            Want to run <code>npm ci --ignore-scripts</code> but you don't know if you should?
+        </p>
+        <p>
+            Send a list of packages with pre/post install scripts, get back which of these packages are ok to be ignored.
+            
+               <pre>
+ GET /api/oktoignore?packages=core-js,webpack
+               </pre>
+        </p>
+        <p>
+            Send a list of packages with pre/post install scripts, get back the list WITHOUT the packages known to work without their scripts.
+            
+               <pre>
+ GET /api/dropignore?packages=core-js,webpack
+               </pre>
+        </p>
+        <p>
+            
+        <form action="/api/oktoignore" method="GET">
+            Test: <input type="text" name="package" value="core-js,webpack,husky">
+            <input type="submit" value="Check">
+        </form>
+        </p>
+
+    </section>
+
+</body>
+
+</html>
