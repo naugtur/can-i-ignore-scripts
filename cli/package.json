@@ -1,0 +1,19 @@
+{
+  "name": "can-i-ignore-scripts",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "bin": "index.js",
+  "keywords": ["security","postinstall","preinstall","npm"],
+  "author": "naugtur <naugtur@gmail.com>",
+  "license": "Apache-2.0",
+  "files":["index.js"],
+  "dependencies": {
+    "glob": "^7.1.7",
+    "lodash": "^4.17.21",
+    "undici-fetch": "^1.0.0-rc.4"
+  }
+}
