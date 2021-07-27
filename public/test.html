@@ -42,23 +42,18 @@
 <body>
     <section>
 
-        <h1>Can I ignore packages?</h1>
-        <p>
-            Want to run <code>npm ci --ignore-scripts</code> but you don't know if you should?
-        </p>
-        <p>
-            Scan your <code>node_modules</code> for packages with install scripts and get a list of packages to review. Packages with known unnecessary scripts will be ignored.
+        <h1>Welcome to manual testing page. Feel free to go away :)</h1>
             
-               <pre>
- npx can-i-ingnore-scripts
-               </pre>
+        <form action="/api/oktoignore" method="GET">
+            Test: <input type="text" name="packages" value="core-js,webpack,husky">
+            <input type="submit" value="Check">
+        </form>
         </p>
-        
     </section>
     <small>
         THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
         <br>
-        It's an experiment. It sends names of the packages with scripts to the server where they're added to a set so I can research more of them and expand the list. Nothing else is stored.
+        It's an experiment. It stores 
     </small>
 
 </body>
