@@ -1,3 +1,6 @@
 {
-    "core-js":"funding"
+    "core-js":"funding",
+    "core-js-pure":"funding",
+    "ejs":"funding",
+    "monorepo-symlink-test":"false positive"
 }
