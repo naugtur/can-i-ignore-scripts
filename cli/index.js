@@ -17,20 +17,20 @@ const found = _.chain(files)
     .groupBy(pkg => pkg.name)
     .value()
 
-    if (found.length===0) {
-        console.log('No scripts found')
-        process.exit(0)
-    }
+if (Object.keys(found).length === 0) {
+    console.log('No scripts found')
+    process.exit(0)
+}
 
-fetch(`https://can-i-ignore-scripts.vercel.app/api/dropignore?packages=${Object.keys(found).join(',')}`)
+fetch(`https://can-i-ignore-scripts.vercel.app/api/oktoignore?packages=${Object.keys(found).join(',')}`)
     .then(response => response.json())
-    .then(remaining => {
-        if (remaining.length > 0) {
+    .catch(err => {
+        console.error(err.message)
+        return []
+    })
+    .then(canignore => {
         console.log('Review these scripts:')
-        console.log(util.inspect(remaining.map(pkg => found[pkg]).flat(), { depth: 5 }))
-        } else {
-            console.log('All scripts are safe to ignore')
-        }
+        console.log(util.inspect(Object.keys(found).filter(pkg => !canignore.includes(pkg)).map(pkg => found[pkg]).flat(), { depth: 5 }))
     }).catch(err => {
         console.error(err)
     })

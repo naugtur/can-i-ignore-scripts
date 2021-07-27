@@ -7,10 +7,17 @@
     "test": ""
   },
   "bin": "index.js",
-  "keywords": ["security","postinstall","preinstall","npm"],
+  "keywords": [
+    "security",
+    "postinstall",
+    "preinstall",
+    "npm"
+  ],
   "author": "naugtur <naugtur@gmail.com>",
   "license": "Apache-2.0",
-  "files":["index.js"],
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
     "glob": "^7.1.7",
     "lodash": "^4.17.21",
