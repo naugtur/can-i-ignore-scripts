@@ -1,0 +1,23 @@
+{
+  "name": "can-i-ignore-scripts",
+  "version": "1.0.0",
+  "description": "A service and cli to analyze your dependencies and check what'll break when you switch from `npm ci` to `npm ci --ignore-scripts`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naugtur/can-i-ignore-scripts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naugtur/can-i-ignore-scripts/issues"
+  },
+  "homepage": "https://github.com/naugtur/can-i-ignore-scripts#readme",
+  "dependencies": {
+    "ioredis": "^4.27.6"
+  }
+}

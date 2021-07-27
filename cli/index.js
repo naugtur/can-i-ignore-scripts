@@ -4,6 +4,7 @@ const glob = require('glob')
 const util = require('util')
 const _ = require('lodash')
 const fetch = require('undici-fetch')
+const okToIgnore = Object.keys(require('./okToIgnore.json'))
 
 const scriptNames = ['preinstall', 'postinstall', 'install']
 
@@ -25,8 +26,8 @@ if (Object.keys(found).length === 0) {
 fetch(`https://can-i-ignore-scripts.vercel.app/api/oktoignore?packages=${Object.keys(found).join(',')}`)
     .then(response => response.json())
     .catch(err => {
-        console.error(err.message)
-        return []
+        console.error('Failed to get online data, falling back to offline', err.message)
+        return okToIgnore;
     })
     .then(canignore => {
         console.log('Review these scripts:')

@@ -1,10 +1,11 @@
 {
   "name": "can-i-ignore-scripts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "",
+    "prepare": "cp ../okToIgnore.json ./"
   },
   "bin": "index.js",
   "keywords": [
@@ -16,7 +17,8 @@
   "author": "naugtur <naugtur@gmail.com>",
   "license": "Apache-2.0",
   "files": [
-    "index.js"
+    "index.js",
+    "okToIgnore.json"
   ],
   "dependencies": {
     "glob": "^7.1.7",
