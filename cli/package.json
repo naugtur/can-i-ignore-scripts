@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "prepare": "cp ../okToIgnore.json ./"
+    "prepare": "cp ../data.json ./"
   },
   "bin": "index.js",
   "keywords": [
@@ -18,11 +18,16 @@
   "license": "Apache-2.0",
   "files": [
     "index.js",
-    "okToIgnore.json"
+    "data.json"
   ],
   "dependencies": {
     "glob": "^7.1.7",
     "lodash": "^4.17.21",
     "undici-fetch": "^1.0.0-rc.4"
+  },
+  "devDependencies": {
+    "grpc": "^1.24.11",
+    "pre-commit": "^1.2.2",
+    "spawn-sync": "^1.0.15"
   }
 }

@@ -1,0 +1,24 @@
+{
+    "keep": {
+        
+    },
+    "ignore": {
+        "core-js": "funding",
+        "core-js-pure": "funding",
+        "ejs": "funding",
+        "webpack-cli": "funding",
+        "protobufjs": "verifies initial installation",
+        "spawn-sync": "installs native modules for old node.js versions",
+        "monorepo-symlink-test": "false positive",
+        "pre-commit": "local dev",
+        "uglifyjs-webpack-plugin": "just update to new versions",
+        "@fortawesome/fontawesome-common-types": "prints attribution",
+        "@fortawesome/fontawesome-svg-core": "prints attribution",
+        "@fortawesome/free-solid-svg-icons": "prints attribution",
+        "web3-bzz": "prints a warning",
+        "web3-shh": "prints a warning",
+        "web3": "prints a warning",
+        "fsevents": "used in local development",
+        "husky": "used in local development"
+    }
+}

@@ -4,9 +4,18 @@ const glob = require('glob')
 const util = require('util')
 const _ = require('lodash')
 const fetch = require('undici-fetch')
-const okToIgnore = Object.keys(require('./okToIgnore.json'))
+const localData = require('./data.json')
 
 const scriptNames = ['preinstall', 'postinstall', 'install']
+
+console.log(`
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+  ▄▄·  ▄▄▄·  ▐ ▄     ▄      ▪   ▄▄ •  ▐ ▄       ▄▄▄  ▄▄▄ .    ·▄▄▄▄•
+ ▐█ ▌▪▐█ ▀█ •█▌▐█    ██     ██ ▐█ ▀ ▪•█▌▐█▪     ▀▄ █·▀▄.▀·   .▀· .█▌
+ ██ ▄▄▄█▀▀█ ▐█▐▐▌    ▐█·    ▐█·▄█ ▀█▄▐█▐▐▌ ▄█▀▄ ▐▀▀▄ ▐▀▀▪▄    ▄█▀▀▀•
+ ▐███▌▐█ ▪▐▌██▐█▌    ▐█▌    ▐█▌▐█▄▪▐███▐█▌▐█▌.▐▌▐█•█▌▐█▄▄▌    ▀
+ ·▀▀▀  ▀  ▀ ▀▀ █▪    ▀▀▀    ▀▀▀·▀▀▀▀ ▀▀ █▪ ▀█▄▀▪.▀  ▀ ▀▀▀     ▀
+`)
 
 const files = glob.sync('node_modules/**/package.json')
 const found = _.chain(files)
@@ -23,15 +32,42 @@ if (Object.keys(found).length === 0) {
     process.exit(0)
 }
 
-fetch(`https://can-i-ignore-scripts.vercel.app/api/oktoignore?packages=${Object.keys(found).join(',')}`)
+console.log('▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀')
+fetch(`https://can-i-ignore-scripts.vercel.app/api/check?packages=${Object.keys(found).join(',')}`)
     .then(response => response.json())
     .catch(err => {
-        console.error('Failed to get online data, falling back to offline', err.message)
-        return okToIgnore;
+        console.error(` // Falling back to offline data, couldn't fetch. Error: ${err.message} \n`)
+        return localData;
     })
-    .then(canignore => {
-        console.log('Review these scripts:')
-        console.log(util.inspect(Object.keys(found).filter(pkg => !canignore.includes(pkg)).map(pkg => found[pkg]).flat(), { depth: 5 }))
+    .then(data => {
+        console.log(`Found following packages with scripts:`)
+        const keep = [];
+        console.log(Object.keys(found).map(name => {
+            if (data.ignore[name]) {
+                return `[ ignore ] '${name}' has scripts but they can be ignored \n             reason: ${data.ignore[name]}`
+            } else if (data.keep[name]) {
+                keep.push(name)
+                return `[  keep  ] '${name}' needs its scripts to run`
+            } else {
+                let tip = ''
+                if (found[name].flatMap(pkg => Object.values(pkg.scripts)).join('').includes('gyp ')) {
+                    tip = '(it uses gyp, so you probably need it)'
+                    keep.push(name)
+                }
+                return `[ check? ] '${name}' needs reviewing ${tip}\n${util.inspect(found[name])}`
+            }
+        }).sort().reverse().join('\n'))
+        if (keep.length > 0) {
+            console.log(`
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+What now? Run rebuild after 'npm ci --ignore-scripts' to trigger 
+scripts you need to keep. A suggestion to get you started:
+
+npm rebuild ${keep.join(' ')}
+`)
+console.log('█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n')
+
+        }
     }).catch(err => {
         console.error(err)
     })
