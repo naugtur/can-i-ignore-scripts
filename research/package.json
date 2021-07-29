@@ -1,0 +1,15 @@
+{
+  "name": "research",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scan.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "undici-fetch": "^1.0.0-rc.4"
+  }
+}
