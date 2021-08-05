@@ -6,6 +6,7 @@ items.reduce((queue, i) => queue.then(() => fetch(`https://registry.npmjs.org/${
         const { postinstall, preinstall, install } = (pkg.scripts || {})
         if (![postinstall, preinstall, install].join().includes('gyp')) {
             console.log(i)
+            // console.log([postinstall, preinstall, install].join())
         }
     }), Promise.resolve()).then(() => {
         console.log('-----')
