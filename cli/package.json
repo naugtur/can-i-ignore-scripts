@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "prepare": "cp ../data.json ./"
+    "prepare": "cp ../data.json ./ && cp ../README.md ./"
   },
   "bin": "index.js",
   "keywords": [
