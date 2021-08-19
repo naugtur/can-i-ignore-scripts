@@ -11,8 +11,8 @@
     "url": "git+https://github.com/naugtur/can-i-ignore-scripts.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "naugtur <naugtur@gmail.com>",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/naugtur/can-i-ignore-scripts/issues"
   },

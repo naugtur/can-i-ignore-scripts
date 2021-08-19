@@ -1,6 +1,6 @@
 {
   "name": "can-i-ignore-scripts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,14 @@
   ],
   "author": "naugtur <naugtur@gmail.com>",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naugtur/can-i-ignore-scripts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/naugtur/can-i-ignore-scripts/issues"
+  },
+  "homepage": "https://github.com/naugtur/can-i-ignore-scripts#readme",
   "files": [
     "index.js",
     "data.json"
