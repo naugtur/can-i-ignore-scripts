@@ -75,7 +75,8 @@
         "bluetooth-hci-socket": "native addon built with gyp",
         "xpc-connection": "native addon built with gyp",
         "usb": "native addon built with gyp",
-        "zlib": "runs build with node-waf"
+        "zlib": "runs build with node-waf",
+        "bignum": "native addon built with gyp"
     },
     "ignore": {
         "core-js": "funding",
@@ -137,7 +138,6 @@
         "backport": "todo",
         "bestie": "todo",
         "better-sqlite3": "todo",
-        "bignum": "todo",
         "bower-complete": "todo",
         "bs-platform": "todo",
         "caporal": "todo",

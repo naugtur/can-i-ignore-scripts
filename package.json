@@ -4,7 +4,7 @@
   "description": "A service and cli to analyze your dependencies and check what'll break when you switch from `npm ci` to `npm ci --ignore-scripts`",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./test/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "homepage": "https://github.com/naugtur/can-i-ignore-scripts#readme",
   "dependencies": {
     "ioredis": "^4.27.6"
+  },
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
   }
 }
