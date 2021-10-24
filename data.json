@@ -108,7 +108,8 @@
         "libreact": "funding",
         "nuxt-edge": "funding",
         "typescript3": "typosquatter, how did you even install it?",
-        "react-native-unimodules": "prints info"
+        "react-native-unimodules": "prints info",
+        "@scarf/scarf": "sends anonymized usage info of packages that depend on @scarf/scarf"
     },
     "todo": {
         "@ant-design/tools": "todo",
@@ -129,7 +130,6 @@
         "@netlify/esbuild": "todo",
         "@percy/core": "todo",
         "@pob/root": "todo",
-        "@scarf/scarf": "I checked the script but didn't understand",
         "@tensorflow/tfjs-node": "todo",
         "@zeit/git-hooks": "todo",
         "antd-tools": "todo",
