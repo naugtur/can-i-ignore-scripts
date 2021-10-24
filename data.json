@@ -107,7 +107,8 @@
         "nuxt": "funding",
         "libreact": "funding",
         "nuxt-edge": "funding",
-        "typescript3": "typosquatter, how did you even install it?"
+        "typescript3": "typosquatter, how did you even install it?",
+        "react-native-unimodules": "prints info"
     },
     "todo": {
         "@ant-design/tools": "todo",
