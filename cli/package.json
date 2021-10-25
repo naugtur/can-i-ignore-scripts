@@ -1,6 +1,6 @@
 {
   "name": "can-i-ignore-scripts",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -32,7 +32,7 @@
   "dependencies": {
     "glob": "^7.1.7",
     "lodash": "^4.17.21",
-    "undici-fetch": "^1.0.0-rc.4"
+    "undici": "^4.8.1"
   },
   "devDependencies": {
     "grpc": "^1.24.11",

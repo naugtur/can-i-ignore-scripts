@@ -3,7 +3,7 @@ const fs = require('fs')
 const glob = require('glob')
 const util = require('util')
 const _ = require('lodash')
-const fetch = require('undici-fetch')
+const { request } = require('undici')
 const localData = require('./data.json')
 
 const scriptNames = ['preinstall', 'postinstall', 'install']
@@ -33,8 +33,8 @@ if (Object.keys(found).length === 0) {
 }
 
 console.log('▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀')
-fetch(`https://can-i-ignore-scripts.vercel.app/api/check?packages=${Object.keys(found).join(',')}`)
-    .then(response => response.json())
+request(`https://can-i-ignore-scripts.vercel.app/api/check?packages=${Object.keys(found).join(',')}`)
+    .then(response => response.body.json())
     .catch(err => {
         console.error(` // Falling back to offline data, couldn't fetch. Error: ${err.message} \n`)
         return localData;
