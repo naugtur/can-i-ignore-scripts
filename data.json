@@ -77,9 +77,9 @@
         "usb": "native addon built with gyp",
         "zlib": "runs build with node-waf",
         "bignum": "native addon built with gyp",
-        "fsevents": "used in local development to install tooling",
-        "husky": "used in local development to install tooling",
-        "git-hooks": "used in local development to install tooling",
+        "fsevents": "used in local development to install tooling, can skip for CI",
+        "husky": "used in local development to install tooling, can skip for CI",
+        "git-hooks": "used in local development to install tooling, can skip for CI",
     },
     "ignore": {
         "core-js": "funding",
