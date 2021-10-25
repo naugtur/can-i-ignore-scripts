@@ -47,7 +47,7 @@ fetch(`https://can-i-ignore-scripts.vercel.app/api/check?packages=${Object.keys(
                 return `[ ignore ] '${name}' has scripts but they can be ignored \n             reason: ${data.ignore[name]}`
             } else if (data.keep[name]) {
                 keep.push(name)
-                return `[  keep  ] '${name}' needs its scripts to run \n             reason: ${data.ignore[name]}`
+                return `[  keep  ] '${name}' needs its scripts to run \n             reason: ${data.keep[name]}`
             } else {
                 let tip = ''
                 if (found[name].flatMap(pkg => Object.values(pkg.scripts)).join('').includes('gyp ')) {
