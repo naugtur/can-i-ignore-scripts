@@ -76,7 +76,10 @@
         "xpc-connection": "native addon built with gyp",
         "usb": "native addon built with gyp",
         "zlib": "runs build with node-waf",
-        "bignum": "native addon built with gyp"
+        "bignum": "native addon built with gyp",
+        "fsevents": "used in local development to install tooling",
+        "husky": "used in local development to install tooling",
+        "git-hooks": "used in local development to install tooling",
     },
     "ignore": {
         "core-js": "funding",
@@ -99,9 +102,6 @@
         "web3-bzz": "prints a warning",
         "web3-shh": "prints a warning",
         "web3": "prints a warning",
-        "fsevents": "used in local development",
-        "husky": "used in local development",
-        "git-hooks": "used in local development",
         "vuepress": "funding",
         "@compodoc/compodoc": "funding",
         "parcel-bundler": "funding",
