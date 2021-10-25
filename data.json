@@ -79,7 +79,7 @@
         "bignum": "native addon built with gyp",
         "fsevents": "used in local development to install tooling, can skip for CI",
         "husky": "used in local development to install tooling, can skip for CI",
-        "git-hooks": "used in local development to install tooling, can skip for CI",
+        "git-hooks": "used in local development to install tooling, can skip for CI"
     },
     "ignore": {
         "core-js": "funding",
