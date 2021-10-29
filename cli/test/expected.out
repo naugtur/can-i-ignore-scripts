@@ -10,17 +10,15 @@
 Found following packages with scripts:
 [ ignore ] 'spawn-sync' has scripts but they can be ignored 
              reason: installs native modules for old node.js versions
-[ ignore ] 'pre-commit' has scripts but they can be ignored 
-             reason: used in local development
-[  keep  ] 'grpc' needs its scripts to run 
-             reason: native addon built with gyp
+[  keep  ] 'pre-commit' needs its scripts to run 
+             reason: used in local development, can skip for CI
 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 What now? Run rebuild after 'npm ci --ignore-scripts' to trigger 
 scripts you need to keep. 
 
 A suggestion to get you started:
-npm rebuild grpc
+npm rebuild pre-commit
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
 If you check some packages, consider contributing your findings on github.
