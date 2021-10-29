@@ -77,6 +77,7 @@
         "usb": "native addon built with gyp",
         "zlib": "runs build with node-waf",
         "bignum": "native addon built with gyp",
+        "pre-commit": "used in local development, can skip for CI",
         "fsevents": "used in local development to install tooling, can skip for CI",
         "husky": "used in local development to install tooling, can skip for CI",
         "git-hooks": "used in local development to install tooling, can skip for CI"
@@ -90,7 +91,6 @@
         "protobufjs": "verifies initial installation",
         "spawn-sync": "installs native modules for old node.js versions",
         "monorepo-symlink-test": "false positive",
-        "pre-commit": "used in local development",
         "uglifyjs-webpack-plugin": "just update to new versions",
         "@fortawesome/fontawesome-common-types": "prints attribution",
         "@fortawesome/fontawesome-svg-core": "prints attribution",
