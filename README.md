@@ -4,6 +4,8 @@ A service and cli to analyze your dependencies and check what'll break when you 
 
 Read more in [this blog post](https://dev.to/naugtur/get-safe-and-remain-productive-with-can-i-ignore-scripts-2ddc)
 
+> The advice provided by this tool is only to help figure out which scripts ahould make the short list. In terms of security - every script you're already running for months is fine. What you want to avoid is running this malicious script that someone just added to a new version of your dependency that wasn't there. And for that, `--ignore-scripts` is the remedy.
+
 ## Usage
 
 Go to the folder containing your installed node_modules and run `can-i-ignore-scripts` either by installing it first or via npx `npx can-i-ignore-scripts`
