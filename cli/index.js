@@ -18,10 +18,16 @@ console.log(`
 `)
 
 const files = glob.sync('node_modules/**/package.json')
+const failures = [];
 const found = _.chain(files)
     .map(file => {
-        const { name, scripts, version } = JSON.parse(fs.readFileSync(file))
-        return { name, version, scripts: _.pick(scripts, scriptNames), path: file.substr(0, file.length - 12) }
+        try {
+            const { name, scripts, version } = JSON.parse(fs.readFileSync(file).toString())
+            return { name, version, scripts: _.pick(scripts, scriptNames), path: file.substr(0, file.length - 12) }
+        } catch {
+            failures.push(file);
+            return { scripts: {} }
+        }
     })
     .filter(pkg => Object.keys(pkg.scripts).length > 0)
     .groupBy(pkg => pkg.name)
@@ -33,6 +39,11 @@ if (Object.keys(found).length === 0) {
 }
 
 console.log('▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀')
+
+if (failures.length > 0) {
+    console.log(`Failed to parse files:\n  - ${failures.join('\n  - ')}\n`);
+}
+
 request(`https://can-i-ignore-scripts.vercel.app/api/check?packages=${Object.keys(found).join(',')}`)
     .then(response => response.body.json())
     .catch(err => {
