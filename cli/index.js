@@ -25,11 +25,12 @@ const found = _.chain(files)
             json = JSON.parse(fs.readFileSync(file))
         } catch (e) {
             console.error(`Oops, ${file} doesn't seem to be a valid JSON`)
+            return null
         }
         const { name, scripts, version } = json
         return { name, version, scripts: _.pick(scripts, scriptNames), path: file.substr(0, file.length - 12) }
     })
-    .filter(pkg => Object.keys(pkg.scripts).length > 0)
+    .filter(pkg => pkg && Object.keys(pkg.scripts).length > 0)
     .groupBy(pkg => pkg.name)
     .value()
 
