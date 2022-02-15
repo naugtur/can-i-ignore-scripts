@@ -81,6 +81,7 @@
         "fsevents": "used in local development to install tooling, can skip for CI",
         "husky": "used in local development to install tooling, can skip for CI",
         "git-hooks": "used in local development to install tooling, can skip for CI",
+        "simple-git-hooks": "used in local development to install tooling, can skip for CI",
         "postinstall-postinstall": "makes yarn run postinstall in some cases when it didn't"
     },
     "ignore": {
@@ -250,7 +251,6 @@
         "react-popper-tooltip": "todo",
         "restana": "todo",
         "sauce-connect-launcher": "todo",
-        "simple-git-hooks": "todo",
         "spectron": "todo",
         "ssh2": "todo",
         "storage-engine": "todo",
