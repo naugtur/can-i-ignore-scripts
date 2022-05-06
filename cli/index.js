@@ -4,9 +4,17 @@ const glob = require('glob')
 const util = require('util')
 const _ = require('lodash')
 const { request } = require('undici')
+const yargs = require('yargs-parser')
 const localData = require('./data.json')
+const { lowerFirst } = require('lodash')
 
 const scriptNames = ['preinstall', 'postinstall', 'install']
+
+const argv = yargs(process.argv.slice(2), {
+    string: [ 'mode' ],
+    alias: { mode: 'm' },
+    default: { mode: 'online' }
+})
 
 console.log(`
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -40,13 +48,28 @@ if (Object.keys(found).length === 0) {
 }
 
 console.log('▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀')
-request(`https://can-i-ignore-scripts.vercel.app/api/check?packages=${Object.keys(found).join(',')}`)
-    .then(response => response.body.json())
-    .catch(err => {
-        console.error(` // Falling back to offline data, couldn't fetch. Error: ${err.message} \n`)
-        return localData;
-    })
-    .then(data => {
+let data;
+switch (argv.mode) {
+    case 'online':
+    case 'share-nothing':
+        {
+            const query = argv.mode === 'online' ? `?packages=${Object.keys(found).join(',')}` : ''
+            data = request(`https://can-i-ignore-scripts.vercel.app/api/check${query}`)
+                .then(response => response.body.json())
+                .catch(err => {
+                    console.error(` // Falling back to offline data, couldn't fetch. Error: ${err.message} \n`)
+                    return localData;
+                })
+        }
+        break
+    case 'offline':
+        data = Promise.resolve(localData)
+        break
+    default:
+        console.error(`Unknown value for --mode (${argv.mode}), must be one of 'online' (default), 'share-nothing', or 'offline'`)
+        process.exit(2)
+}
+data.then(data => {
         console.log(`Found following packages with scripts:`)
         const keep = [];
         console.log(Object.keys(found).map(name => {
@@ -82,4 +105,3 @@ Just use something like this: npm rebuild package1 package2`)
     }).catch(err => {
         console.error(err)
     })
-
