@@ -82,7 +82,12 @@
         "husky": "used in local development to install tooling, can skip for CI",
         "git-hooks": "used in local development to install tooling, can skip for CI",
         "simple-git-hooks": "used in local development to install tooling, can skip for CI",
-        "postinstall-postinstall": "makes yarn run postinstall in some cases when it didn't"
+        "postinstall-postinstall": "makes yarn run postinstall in some cases when it didn't",
+        "playwright": "downloads browser builds to work",
+        "node-pty": "native addon built with gyp",
+        "keytar": "native addon built with gyp",
+        "electron": "downloads binary pre-builds to work",
+        "@vscode/ripgrep": "downloads ripgrep builds to work"
     },
     "ignore": {
         "core-js": "funding",
