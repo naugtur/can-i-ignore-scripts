@@ -28,7 +28,13 @@ const found = _.chain(files)
             return null
         }
         const { name, scripts, version } = json
-        return { name, version, scripts: _.pick(scripts, scriptNames), path: file.substr(0, file.length - 12) }
+        const path = file.slice(0, -12)
+        // "generate" the default install script if needed
+        // see https://docs.npmjs.com/cli/v8/configuring-npm/package-json#default-values
+        if (!scripts.preinstall && !scripts.install && fs.existsSync(`${path}binding.gyp`)) {
+            scripts.install = "node-gyp rebuild"
+        }
+        return { name, version, scripts: _.pick(scripts, scriptNames), path }
     })
     .filter(pkg => pkg && Object.keys(pkg.scripts).length > 0)
     .groupBy(pkg => pkg.name)
