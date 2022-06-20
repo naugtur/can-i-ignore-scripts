@@ -32,7 +32,8 @@
   "dependencies": {
     "glob": "^7.1.7",
     "lodash": "^4.17.21",
-    "undici": "^4.8.1"
+    "undici": "^4.8.1",
+    "yargs-parser": "^21.0.1"
   },
   "devDependencies": {
     "pre-commit": "^1.2.2"
