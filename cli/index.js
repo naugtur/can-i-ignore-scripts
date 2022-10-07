@@ -49,6 +49,7 @@ request(`https://can-i-ignore-scripts.vercel.app/api/check?packages=${Object.key
     .then(data => {
         console.log(`Found following packages with scripts:`)
         const keep = [];
+        const check = [];
         console.log(Object.keys(found).map(name => {
             if (data.ignore[name]) {
                 return `[ ignore ] '${name}' has scripts but they can be ignored \n             reason: ${data.ignore[name]}`
@@ -60,6 +61,8 @@ request(`https://can-i-ignore-scripts.vercel.app/api/check?packages=${Object.key
                 if (found[name].flatMap(pkg => Object.values(pkg.scripts)).join('').includes('gyp ')) {
                     tip = '(it uses gyp, so you probably need it)'
                     keep.push(name)
+                } else {
+                    check.push(name)
                 }
                 return `[ check? ] '${name}' needs reviewing ${tip}\n${util.inspect(found[name])}`
             }
@@ -71,7 +74,9 @@ scripts you need to keep. `)
         if (keep.length > 0) {
             console.log(`
 A suggestion to get you started:
-npm rebuild ${keep.join(' ')}`)
+npm rebuild ${keep.join(' ')}
+Or run all except the ones you can ignore now:
+npm rebuild ${[...keep,...check].join(' ')}`)
         } else {
             console.log(`
 Just use something like this: npm rebuild package1 package2`)

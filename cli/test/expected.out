@@ -19,6 +19,8 @@ scripts you need to keep.
 
 A suggestion to get you started:
 npm rebuild pre-commit
+Or run all except the ones you can ignore now:
+npm rebuild pre-commit
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
 If you check some packages, consider contributing your findings on github.
