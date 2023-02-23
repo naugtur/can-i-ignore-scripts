@@ -86,7 +86,7 @@ Just use something like this: npm rebuild package1 package2`)
 
         // Exit with non-zero (fail) if there were packages with scripts we
         // couldn't ignore. This lets us easily test for failure in shells.
-        process.exit( keep.length + check.length > 0 );
+        process.exit( keep.length + check.length > 0 ? 1 : 0 );
     }).catch(err => {
         console.error(err)
         process.exit( 1 );
