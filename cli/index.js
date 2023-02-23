@@ -84,7 +84,11 @@ Just use something like this: npm rebuild package1 package2`)
         console.log('█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n')
         console.log('If you check some packages, consider contributing your findings on github.')
 
+        // Exit with non-zero (fail) if there were packages with scripts we
+        // couldn't ignore. This lets us easily test for failure in shells.
+        process.exit( keep.length + check.length > 0 );
     }).catch(err => {
         console.error(err)
+        process.exit( 1 );
     })
 
