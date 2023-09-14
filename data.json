@@ -122,6 +122,7 @@
         "typescript3": "typosquatter, how did you even install it?",
         "react-native-unimodules": "prints info",
         "@scarf/scarf": "sends anonymized usage info of packages that depend on @scarf/scarf",
+        "styled-components": "prints a message",
         "nodemon": "funding",
         "@naugtur/pentest-my-ci": "exists to check if it's been ignored",
         "@lavamoat/preinstall-always-fail": "exists to check if it's been ignored",
