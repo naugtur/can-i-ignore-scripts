@@ -81,6 +81,7 @@
         "pre-commit": "used in local development, can skip for CI",
         "fsevents": "used in local development to install tooling, can skip for CI",
         "husky": "used in local development to install tooling, can skip for CI",
+        "yorkie": "used in local development to install tooling, can skip for CI",
         "git-hooks": "used in local development to install tooling, can skip for CI",
         "simple-git-hooks": "used in local development to install tooling, can skip for CI",
         "postinstall-postinstall": "makes yarn run postinstall in some cases when it didn't",
@@ -128,7 +129,8 @@
         "@naugtur/pentest-my-ci": "exists to check if it's been ignored",
         "@lavamoat/preinstall-always-fail": "exists to check if it's been ignored",
         "good_dep": "false detection from test files",
-        "evil_dep": "false detection from test files"
+        "evil_dep": "false detection from test files",
+        "esbuild": "points the CLI command directly at the native executable for slightly faster build startup"
     },
     "todo": {
         "@ant-design/tools": "todo",
@@ -179,7 +181,6 @@
         "electron-chromedriver": "todo",
         "electron-prebuilt": "todo",
         "elm": "todo",
-        "esbuild": "todo",
         "eslint-config-apostrophe": "todo",
         "eslint-config-okonet": "todo",
         "eslint-plugin-cypress-dev": "todo",
@@ -286,7 +287,6 @@
         "yo": "todo",
         "yo-complete": "todo",
         "yoga-layout": "todo",
-        "yorkie": "todo",
         "@angular/cli": "todo",
         "@carbon/icons-react": "todo",
         "@datadog/native-metrics": "todo",
