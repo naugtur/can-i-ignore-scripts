@@ -100,6 +100,7 @@
         "webpack-cli": "funding",
         "protobufjs": "verifies initial installation",
         "spawn-sync": "installs native modules for old node.js versions",
+        "ljharb-monorepo-symlink-test": "false detection from test files",
         "monorepo-symlink-test": "false positive",
         "uglifyjs-webpack-plugin": "just update to new versions",
         "@fortawesome/fontawesome-common-types": "prints attribution",
@@ -130,6 +131,7 @@
         "@lavamoat/preinstall-always-fail": "exists to check if it's been ignored",
         "good_dep": "false detection from test files",
         "evil_dep": "false detection from test files",
+        "es5-ext": "Broadcasts 'Call for peace' message when package is installed in Russia, otherwise no-op",
         "esbuild": "points the CLI command directly at the native executable for slightly faster build startup"
     },
     "todo": {
