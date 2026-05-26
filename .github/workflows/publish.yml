@@ -13,7 +13,8 @@ permissions: {}
 
 jobs:
   publish:
-    # if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/')
+    # Only execute if running in the original repository AND triggered manually or via a version tag
+    if: github.repository == 'naugtur/can-i-ignore-scripts' && (github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/'))
     runs-on: ubuntu-latest
     permissions:
       contents: read        # checkout the tag
